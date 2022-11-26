@@ -1,27 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D playerRb;
-
     public SpawnManager spawner;
 
-    public float speed;
-
-    public int score = 0;
+    private int speed = 3;
 
     private float yBound = 4;
-    private float xBound = 11;
+    private float xBound = 9;
+
+    public int score = 0;
 
     public bool hasPowerup = false;
     
     // Start is called before the first frame update
     void Start()
     {
-        playerRb = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -40,8 +37,8 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxis("Vertical");
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        playerRb.AddForce(Vector2.up * speed * verticalInput);
-        playerRb.AddForce(Vector2.right * speed * horizontalInput);
+        transform.Translate(Vector2.up * speed * Time.deltaTime * verticalInput, Space.World);
+        transform.Translate(Vector2.right * speed * Time.deltaTime * horizontalInput, Space.World);
     }
 
     private void OnTriggerEnter2D(Collider2D other) // Remember to make trigger for 2D
@@ -49,29 +46,24 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("powerup")) // Pickup powerup and start timer for spawning a new one
         {
             hasPowerup = true;
-            speed = 3;
             Destroy(other.gameObject);
+            speed = 10;
             StartCoroutine(PowerupCooldown());
-        }
-        else
-        {
-            hasPowerup = false;
-            speed = 1;
-        }
+        } 
 
         if (other.CompareTag("potato")) // Collect potatos and add it to the score
         {
             Destroy(other.gameObject);
             score++;
             Debug.Log(score);
-
         }
     }
 
-    IEnumerator PowerupCooldown() // The cooldown for whena powerup should spawn efter having been picked up
+    IEnumerator PowerupCooldown() // The cooldown for when a powerup should spawn efter having been picked up
     {
-        hasPowerup = false;
         yield return new WaitForSeconds(3);
+        hasPowerup = false;
+        speed = 3;
         spawner.SpawnPowerup();
     }
 

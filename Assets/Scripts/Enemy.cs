@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public float speed;
 
     private float yBound = 4;
-    private float xBound = 11;
+    private float xBound = 9;
 
     private Rigidbody2D enemyRb;
     private GameObject player;
