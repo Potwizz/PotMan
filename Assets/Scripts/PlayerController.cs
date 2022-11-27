@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public SpawnManager spawner;
+    public GameManager spawner;
 
     private int speed = 3;
 
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         {
             hasPowerup = true;
             Destroy(other.gameObject);
-            speed = 10;
+            speed = 5;
             StartCoroutine(PowerupCooldown());
         } 
 
@@ -58,6 +58,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log(score);
         }
     }
+
 
     IEnumerator PowerupCooldown() // The cooldown for when a powerup should spawn efter having been picked up
     {
