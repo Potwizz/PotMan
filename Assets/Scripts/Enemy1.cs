@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy1 : MonoBehaviour
 {
+    private GameManager gameManager;
+
     public float speed = 5;
 
     // Start is called before the first frame update
@@ -23,14 +25,4 @@ public class Enemy1 : MonoBehaviour
         transform.Translate(Vector2.left * speed * Time.deltaTime);
     }
 
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("player"))
-        {
-            Destroy(collision.gameObject);
-            // playerAlive = false;
-            Debug.Log("Game Over");
-        }
-    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public GameManager spawner;
+    public GameManager gameManager;
 
     private int speed = 3;
 
@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private float xBound = 9;
 
     public int score = 0;
+    public int pointValue;
 
     public bool hasPowerup = false;
     
@@ -54,18 +55,25 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("potato")) // Collect potatos and add it to the score
         {
             Destroy(other.gameObject);
-            score++;
+            gameManager.UpdateScore(pointValue);
             Debug.Log(score);
         }
-    }
 
+        if (other.CompareTag("enemy"))
+        {
+            Destroy(gameObject);
+            // playerAlive = false;
+            gameManager.GameOver();
+            Debug.Log("Game Over");
+        }
+    }
 
     IEnumerator PowerupCooldown() // The cooldown for when a powerup should spawn efter having been picked up
     {
         yield return new WaitForSeconds(3);
         hasPowerup = false;
         speed = 3;
-        spawner.SpawnPowerup();
+        gameManager.SpawnPowerup();
     }
 
     // Prevent player from leaving the screen on all sides. Boundary

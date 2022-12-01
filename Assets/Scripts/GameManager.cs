@@ -4,11 +4,11 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI gameOverText;
 
     private int score;
 
@@ -16,8 +16,13 @@ public class GameManager : MonoBehaviour
     public GameObject potatoPrefab;
     public GameObject farmerPrefab;
     public GameObject farmerYPrefab;
+    public GameObject titleScreen;
+    public GameObject player;
+
+    public Button restartButton;
 
     public bool isPotato = false;
+    public bool isGameActive;
 
     private float spawnRangeX = 8;
     private float spawnRangeY = 3.5f;
@@ -31,45 +36,42 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        SpawnPowerup();
-        SpawnPotato();
-        InvokeRepeating("SpawnFarmerX", startDelay, spawnInterval);
-        InvokeRepeating("SpawnFarmerY", startDelay, spawnInterval);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(PotatoSpawner());
+        
     }
 
     public void SpawnFarmerX()
     {
-        Vector2 spawnPos = new Vector2(Random.Range(-spawnRangeFarmerX, spawnRangeFarmerX), spawnPosFarmerY);
-        Instantiate(farmerPrefab, spawnPos, farmerPrefab.transform.rotation);
+            Vector2 spawnPos = new Vector2(Random.Range(-spawnRangeFarmerX, spawnRangeFarmerX), spawnPosFarmerY);
+            Instantiate(farmerPrefab, spawnPos, farmerPrefab.transform.rotation);
     }
 
     public void SpawnFarmerY()
     {
-        Vector2 spawnPos = new Vector2(spawnPosFarmerX, Random.Range(-spawnRangeFarmerY, spawnRangeFarmerY));
-        Instantiate(farmerYPrefab, spawnPos, farmerPrefab.transform.rotation);
+            Vector2 spawnPos = new Vector2(spawnPosFarmerX, Random.Range(-spawnRangeFarmerY, spawnRangeFarmerY));
+            Instantiate(farmerYPrefab, spawnPos, farmerPrefab.transform.rotation);
     }
 
 
     public void SpawnPowerup()
     {
-        Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
     }
 
     public void SpawnPotato()
     {
-        Instantiate(potatoPrefab, GenerateSpawnPosition(), potatoPrefab.transform.rotation);
-        isPotato = false;
+            Instantiate(potatoPrefab, GenerateSpawnPosition(), potatoPrefab.transform.rotation);
+            isPotato = false;
     }
 
     IEnumerator PotatoSpawner()
     {
-        if (isPotato == false)
+        while (isGameActive == true)
         {
             isPotato = true;
             yield return new WaitForSeconds(3);
@@ -92,4 +94,35 @@ public class GameManager : MonoBehaviour
         score += scoreToAdd;
         scoreText.text = "Score: " + score; // Adds the score variable into the scene when playing
     }
+
+    public void RestartGame()
+    {
+        Debug.Log("Test");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void StartGame()
+    {
+        isGameActive = true;
+
+        StartCoroutine(PotatoSpawner());
+
+        SpawnPowerup();
+        SpawnPotato();
+        InvokeRepeating("SpawnFarmerX", startDelay, spawnInterval);
+        InvokeRepeating("SpawnFarmerY", startDelay, spawnInterval);
+
+        titleScreen.gameObject.SetActive(false);
+        player.gameObject.SetActive(true);
+
+    }
+
+    public void GameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+        isGameActive = false;
+    }
+
+
 }
