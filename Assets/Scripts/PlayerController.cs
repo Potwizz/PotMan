@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameManager gameManager;
+    private Animator playerAnim;
 
     private int speed = 3;
 
     private float yBound = 4;
-    private float xBound = 9;
+    private float xBound = 5;
 
     public int score = 0;
     public int pointValue;

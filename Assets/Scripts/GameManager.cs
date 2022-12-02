@@ -18,20 +18,21 @@ public class GameManager : MonoBehaviour
     public GameObject farmerYPrefab;
     public GameObject titleScreen;
     public GameObject player;
+    public GameObject scoreTextx;
 
     public Button restartButton;
 
     public bool isPotato = false;
     public bool isGameActive;
 
-    private float spawnRangeX = 8;
+    private float spawnRangeX = 5;
     private float spawnRangeY = 3.5f;
     private float spawnInterval = 1.5f;
     private float startDelay = 1;
-    private float spawnRangeFarmerX = 7.5f;
+    private float spawnRangeFarmerX = 5f;
     private float spawnPosFarmerY = 6;
     private float spawnRangeFarmerY = 4;
-    private float spawnPosFarmerX = 13;
+    private float spawnPosFarmerX = 6;
 
     // Start is called before the first frame update
     void Start()
@@ -114,6 +115,7 @@ public class GameManager : MonoBehaviour
 
         titleScreen.gameObject.SetActive(false);
         player.gameObject.SetActive(true);
+        scoreTextx.gameObject.SetActive(true);
 
     }
 

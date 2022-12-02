@@ -5,7 +5,7 @@ using UnityEngine;
 public class DestroyOutOfBounds : MonoBehaviour
 {
     private float yAxis = -6f;
-    private float xAxis = -15f;
+    private float xAxis = -6f;
 
     // Start is called before the first frame update
     void Start()
