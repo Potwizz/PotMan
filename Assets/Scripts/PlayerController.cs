@@ -5,14 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public GameManager gameManager;
-    private Animator playerAnim;
+
+    private AudioSource playerAudio;
+    public AudioClip pickupSound;
 
     private int speed = 3;
 
     private float yBound = 4;
     private float xBound = 5;
 
-    public int score = 0;
     public int pointValue;
 
     public bool hasPowerup = false;
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -51,13 +52,14 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
             speed = 5;
             StartCoroutine(PowerupCooldown());
+            playerAudio.PlayOneShot(pickupSound, 1.0f);
         } 
 
         if (other.CompareTag("potato")) // Collect potatos and add it to the score
         {
             Destroy(other.gameObject);
             gameManager.UpdateScore(pointValue);
-            Debug.Log(score);
+            playerAudio.PlayOneShot(pickupSound, 1.0f);
         }
 
         if (other.CompareTag("enemy"))

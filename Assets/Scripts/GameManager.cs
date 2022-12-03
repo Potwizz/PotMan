@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
+    public TextMeshProUGUI creditsText;
+
+    private AudioSource playerAudio;
+    public AudioClip deathSound;
 
     private int score;
 
@@ -19,6 +23,7 @@ public class GameManager : MonoBehaviour
     public GameObject titleScreen;
     public GameObject player;
     public GameObject scoreTextx;
+    public GameObject soundManager;
 
     public Button restartButton;
 
@@ -37,7 +42,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -98,7 +103,6 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        Debug.Log("Test");
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -114,17 +118,19 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("SpawnFarmerY", startDelay, spawnInterval);
 
         titleScreen.gameObject.SetActive(false);
+        creditsText.gameObject.SetActive(false);
         player.gameObject.SetActive(true);
         scoreTextx.gameObject.SetActive(true);
-
+        soundManager.gameObject.SetActive(true);
     }
 
     public void GameOver()
     {
+        playerAudio.PlayOneShot(deathSound, 1.0f);
         gameOverText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
+        soundManager.gameObject.SetActive(false);
         isGameActive = false;
+        //playerAudio.Stop(musicPlaying);
     }
-
-
 }
