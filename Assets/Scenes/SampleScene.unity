@@ -2280,7 +2280,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7c30daf444d4c7d4aa8109709dd259c5, type: 3}
+  m_audioClip: {fileID: 8300000, guid: d1c4785d8a5d3454baab9d99278e97e4, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -3356,9 +3356,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Game By: "Potwizz"
-
-    Music By: "DJ. H.a.u.r.u"'
+  m_text: 'Game By: "Potwizz"'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -3469,7 +3467,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 87.1061, y: -23.7081}
+  m_AnchoredPosition: {x: 87.10608, y: -23.70813}
   m_SizeDelta: {x: 162.9641, y: 47.4159}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1889423936
