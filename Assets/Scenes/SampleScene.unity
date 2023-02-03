@@ -2282,7 +2282,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d1c4785d8a5d3454baab9d99278e97e4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.4
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -3024,7 +3024,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03263572, y: 0.0019197613}
+  m_Offset: {x: -0.034963638, y: -0.0004081428}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3035,7 +3035,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8118647, y: 0.8809756}
+  m_Size: {x: 0.70478004, y: 0.75526756}
   m_EdgeRadius: 0
 --- !u!114 &1705649799
 MonoBehaviour:
@@ -3358,7 +3358,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Game By: "Potwizz"
 
-    Version 1.1'
+    Version 1.2'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
   m_sharedMaterial: {fileID: 2147374, guid: 0161d805a3764c089bef00bfe00793f5, type: 2}
@@ -3607,6 +3607,8 @@ MonoBehaviour:
   potatoPrefab: {fileID: 6315271322750036253, guid: 11fb4a5af06da5c43ab93c6789053b38, type: 3}
   farmerPrefab: {fileID: 4495651857068813142, guid: e6c8d1738111acf4ba88c43ccfdee018, type: 3}
   farmerYPrefab: {fileID: 4900104187308946136, guid: a23d2d7fbf21f1b4b850e2c7085663b2, type: 3}
+  farmerBotPrefab: {fileID: 5869936825145825096, guid: 0623da512ef09804583c6a28281a9dcb, type: 3}
+  farmerLeftPrefab: {fileID: 2276948715219938172, guid: c012cf761d5c77f4199f7083dc8ca373, type: 3}
   titleScreen: {fileID: 1039206800}
   player: {fileID: 1705649796}
   scoreTextx: {fileID: 1889423934}

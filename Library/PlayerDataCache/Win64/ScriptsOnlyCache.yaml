@@ -4,6 +4,8 @@ ScriptsOnlyBuild:
     - DestroyOutOfBounds
     - Enemy
     - Enemy1
+    - EnemyBot
+    - EnemyLeft
     - GameManager
     - PlayerController
     - StartButton
@@ -32,10 +34,8 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -87,39 +87,43 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1482}
     - Class: 114
-      Script: {instanceID: 1874}
+      Script: {instanceID: 1494}
     - Class: 114
-      Script: {instanceID: 2290}
+      Script: {instanceID: 1876}
     - Class: 114
-      Script: {instanceID: 2736}
+      Script: {instanceID: 2292}
     - Class: 114
-      Script: {instanceID: 2912}
+      Script: {instanceID: 2738}
     - Class: 114
-      Script: {instanceID: 2962}
+      Script: {instanceID: 2914}
     - Class: 114
-      Script: {instanceID: 3090}
+      Script: {instanceID: 2964}
     - Class: 114
-      Script: {instanceID: 3096}
+      Script: {instanceID: 3092}
     - Class: 114
-      Script: {instanceID: 3154}
+      Script: {instanceID: 3098}
     - Class: 114
-      Script: {instanceID: 3342}
+      Script: {instanceID: 3156}
     - Class: 114
-      Script: {instanceID: 3408}
+      Script: {instanceID: 3344}
     - Class: 114
-      Script: {instanceID: 3474}
+      Script: {instanceID: 3410}
     - Class: 114
-      Script: {instanceID: 3544}
+      Script: {instanceID: 3476}
     - Class: 114
-      Script: {instanceID: 4110}
+      Script: {instanceID: 3546}
     - Class: 114
-      Script: {instanceID: 4146}
+      Script: {instanceID: 3652}
     - Class: 114
-      Script: {instanceID: 4814}
+      Script: {instanceID: 4114}
     - Class: 114
-      Script: {instanceID: 4976}
+      Script: {instanceID: 4150}
     - Class: 114
-      Script: {instanceID: 5384}
+      Script: {instanceID: 4818}
+    - Class: 114
+      Script: {instanceID: 4980}
+    - Class: 114
+      Script: {instanceID: 5388}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -151,6 +155,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyBot
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -471,7 +481,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: 5734389f54d9fe56f92afcb0e815ef20
+      Hash: 06c1ed2846cdc857c5afd9b4eca53f68
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -511,6 +521,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TextContainer
+  - hash:
+      serializedVersion: 2
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: EnemyLeft
   - hash:
       serializedVersion: 2
       Hash: bd3f0ca738703903e759f77536ed74fd
@@ -910,4 +926,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/unity/projects/PotMan/builds/PotMan v1.1/PotMan.exe
+  playerPath: D:/unity/projects/PotMan/builds/PotMan v1.2/PotMan.exe

@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     public GameObject potatoPrefab;
     public GameObject farmerPrefab;
     public GameObject farmerYPrefab;
+    public GameObject farmerBotPrefab;
+    public GameObject farmerLeftPrefab;
     public GameObject titleScreen;
     public GameObject player;
     public GameObject scoreTextx;
@@ -38,6 +40,10 @@ public class GameManager : MonoBehaviour
     private float spawnPosFarmerY = 6;
     private float spawnRangeFarmerY = 4;
     private float spawnPosFarmerX = 6;
+    private float spawnPosFarmerBot = -5f;
+    private float spawnRangeFarmerBot = -6f;
+    private float spawnPosFarmerLeft = -6f;
+    private float spawnRangeFarmerLeft = -4f;
 
     // Start is called before the first frame update
     void Start()
@@ -48,7 +54,15 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       /* if (Input.GetKey(KeyCode.Space))
+        {
+            if(isGameActive == false)
+            {
+                StartGame();
+            }
+
+            Debug.Log("Space has been pressed");
+        } */
     }
 
     public void SpawnFarmerX()
@@ -63,10 +77,21 @@ public class GameManager : MonoBehaviour
             Instantiate(farmerYPrefab, spawnPos, farmerPrefab.transform.rotation);
     }
 
-
-    public void SpawnPowerup()
+    public void SpawnFarmerBot()
     {
-            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+        Vector2 spawnPos = new Vector2(Random.Range(-spawnRangeFarmerBot, spawnRangeFarmerBot), spawnPosFarmerBot);
+        Instantiate(farmerBotPrefab, spawnPos, farmerPrefab.transform.rotation);
+    }
+
+    public void SpawnFarmerLeft()
+    {
+        Vector2 spawnPos = new Vector2(spawnPosFarmerLeft, Random.Range(-spawnRangeFarmerLeft, spawnRangeFarmerLeft));
+        Instantiate(farmerLeftPrefab, spawnPos, farmerPrefab.transform.rotation);
+    }
+
+        public void SpawnPowerup()
+    {
+            Instantiate(powerupPrefab, /*GenerateSpawnPosition()*/new Vector2(0, 1), powerupPrefab.transform.rotation);
     }
 
     public void SpawnPotato()
@@ -80,7 +105,7 @@ public class GameManager : MonoBehaviour
         while (isGameActive == true)
         {
             isPotato = true;
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(1);
             SpawnPotato();
         }
     }
@@ -116,6 +141,8 @@ public class GameManager : MonoBehaviour
         SpawnPotato();
         InvokeRepeating("SpawnFarmerX", startDelay, spawnInterval);
         InvokeRepeating("SpawnFarmerY", startDelay, spawnInterval);
+        InvokeRepeating("SpawnFarmerBot", startDelay, spawnInterval);
+        InvokeRepeating("SpawnFarmerLeft", startDelay, spawnInterval);
 
         titleScreen.gameObject.SetActive(false);
         creditsText.gameObject.SetActive(false);

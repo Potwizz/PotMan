@@ -6,6 +6,8 @@ public class DestroyOutOfBounds : MonoBehaviour
 {
     private float yAxis = -6f;
     private float xAxis = -6f;
+    private float yAxis1 = 6f;
+    private float xAxis1 = 6f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +24,16 @@ public class DestroyOutOfBounds : MonoBehaviour
         }
 
         if (transform.position.y < yAxis)
+        {
+            Destroy(gameObject);
+        }
+
+        if (transform.position.x > xAxis1)
+        {
+            Destroy(gameObject);
+        }
+
+        if (transform.position.y > yAxis1)
         {
             Destroy(gameObject);
         }
