@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public GameObject player;
     public GameObject scoreTextx;
     public GameObject soundManager;
+    public GameObject restartText;
 
     public Button restartButton;
 
@@ -49,20 +50,29 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         playerAudio = GetComponent<AudioSource>();
+        StartGame();
     }
 
     // Update is called once per frame
     void Update()
     {
-       /* if (Input.GetKey(KeyCode.Space))
-        {
-            if(isGameActive == false)
-            {
-                StartGame();
-            }
+        /* if (Input.GetKey(KeyCode.Space))
+         {
+             if(isGameActive == false)
+             {
+                 StartGame();
+             }
 
-            Debug.Log("Space has been pressed");
-        } */
+             Debug.Log("Space has been pressed");
+         } */
+
+        if (isGameActive == false)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+        }
     }
 
     public void SpawnFarmerX()
@@ -128,7 +138,7 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void StartGame()
@@ -144,8 +154,6 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("SpawnFarmerBot", startDelay, spawnInterval);
         InvokeRepeating("SpawnFarmerLeft", startDelay, spawnInterval);
 
-        titleScreen.gameObject.SetActive(false);
-        creditsText.gameObject.SetActive(false);
         player.gameObject.SetActive(true);
         scoreTextx.gameObject.SetActive(true);
         soundManager.gameObject.SetActive(true);
@@ -156,8 +164,10 @@ public class GameManager : MonoBehaviour
         playerAudio.PlayOneShot(deathSound, 1.0f);
         gameOverText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
+        restartText.gameObject.SetActive(true);
         soundManager.gameObject.SetActive(false);
         isGameActive = false;
         //playerAudio.Stop(musicPlaying);
+
     }
 }
